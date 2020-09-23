@@ -5,10 +5,10 @@ from std_msgs.msg import Float64
 
 global current_pos 
 current_pos = 0.0
-pub = rospy.Publisher('/robot/joint4_position_controller/command', Float64, queue_size=10)
+pub = rospy.Publisher('/robot/joint1_position_controller/command', Float64, queue_size=10)
 
-def joint4_move():
-    rospy.init_node('Merey_joint4_move', anonymous=True)
+def joint_move():
+    rospy.init_node('Merey_joint1_move', anonymous=True)
     rospy.loginfo("Current position:" + str(current_pos))
     global start_time 
     start_time = rospy.get_rostime()
@@ -37,7 +37,7 @@ def step():
 
 if __name__ == '__main__':
     try:
-        joint4_move()
+        joint_move()
     except rospy.ROSInterruptException:
         pass
 
