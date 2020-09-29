@@ -217,3 +217,6 @@ target_link_libraries(line_moveit ${catkin_LIBRARIES})
 add_executable(rectangle_moveit src/rectangle.cpp)
 target_link_libraries(rectangle_moveit ${catkin_LIBRARIES})
 
+add_executable(circle_moveit src/circle.cpp)
+target_link_libraries(circle_moveit ${catkin_LIBRARIES})
+
