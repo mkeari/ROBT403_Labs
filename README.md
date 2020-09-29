@@ -1,8 +1,11 @@
-# robt2_labs
 Laboratory projects for the course Robotics II: Control, Modeling and Learning
 
+
 # LAB 3
-Images are located in the folder src/images
+Images are located in the folder lab_week3/images/
+
+
+
 
 # LAB 4
 ## Task 2 - Movement by x-axis
