@@ -25,6 +25,7 @@ int main(int argc, char **argv)
         move_group(PLANNING_GROUP); // loading move_group
     const robot_state::JointModelGroup *joint_model_group = move_group.getCurrentState() -> getJointModelGroup(PLANNING_GROUP); //For joint control
     geometry_msgs::PoseStamped current_pose;
+    geometry_msgs::PoseStamped starting_pose;
     geometry_msgs::PoseStamped target_pose_1;
     geometry_msgs::PoseStamped target_pose_2;
     geometry_msgs::PoseStamped target_pose_3;
@@ -37,24 +38,42 @@ int main(int argc, char **argv)
     /* Retrieving the information about the
        current position and orientation of the end effector*/
     
-    target_pose_1 = current_pose;
-    target_pose_1.pose.position.y = target_pose_1.pose.position.y - 0.3;
+    starting_pose = current_pose;
+    starting_pose.pose.position.x = starting_pose.pose.position.x - 0.4;
+    
+    target_pose_1 = starting_pose;
+    target_pose_1.pose.position.y = target_pose_1.pose.position.y + 0.4;
     
     target_pose_2 = target_pose_1;
-    target_pose_2.pose.position.x = target_pose_2.pose.position.x - 0.5;
+    target_pose_2.pose.position.x = target_pose_2.pose.position.x - 0.3;
 
     target_pose_3 = target_pose_2;
-    target_pose_3.pose.position.y = target_pose_2.pose.position.y + 0.6;
+    target_pose_3.pose.position.y = target_pose_2.pose.position.y - 0.8;
 
     target_pose_4 = target_pose_3;
-    target_pose_4.pose.position.x = target_pose_4.pose.position.x + 0.5;
+    target_pose_4.pose.position.x = target_pose_4.pose.position.x + 0.3;
 
     target_pose_5 = target_pose_4;
-    target_pose_5.pose.position.y = target_pose_5.pose.position.y - 0.3;
+    target_pose_5.pose.position.y = target_pose_5.pose.position.y + 0.4;
 
     /* Basically our target pose is the same as current,
        except that we want to move it a little bit along x-axis*/
     ros::Rate loop_rate(50); //Frequency
+
+
+    while (ros::ok())
+    {
+        move_group.setApproximateJointValueTarget(starting_pose); // To calculate the trajectory
+            move_group.move(); // Move the robot
+        current_pose = move_group.getCurrentPose();
+        if (abs(current_pose.pose.position.x - starting_pose.pose.position.x) < 0.01)
+        {
+            break; // Basically, check if we reached the desired position
+        }
+        loop_rate.sleep();
+    }
+    ROS_INFO("Starting Pose - Done");
+
     
     while (ros::ok())
     {
@@ -73,7 +92,7 @@ int main(int argc, char **argv)
     {
         move_group.setApproximateJointValueTarget(target_pose_2); // To calculate the trajectory
             move_group.move(); // Move the robot
-            ROS_INFO("Trying to reach Target Pose 2");
+            // ROS_INFO("Trying to reach Target Pose 2");
         current_pose = move_group.getCurrentPose();
         if (abs(current_pose.pose.position.x - target_pose_2.pose.position.x) < 0.01)
         {
