@@ -20,28 +20,28 @@ roslaunch robot_lab4 moveit_planning_execution.launch
 6) Run the selected code by corresponding executable (commands are provided below) 
 
 ### Task 2 - Movement by x-axis
-Code: *lab_week5/lab4_test/src/line_x.cpp*
+- Code: *lab_week5/lab4_test/src/line_x.cpp*
 
-Executable:
+- Executable:
 ```
 rosrun lab4_test line_moveit
 ```
-Video: https://youtu.be/GPGJtaTHAQY
+- Video: https://youtu.be/GPGJtaTHAQY
 
 ### Task 3 - Drawing a rectangle
-Code: *lab_week5/lab4_test/src/rectangle.cpp*
+- Code: *lab_week5/lab4_test/src/rectangle.cpp*
 
-Executable:
+- Executable:
 ```
 rosrun lab4_test rectangle_moveit
 ```
-Video: https://youtu.be/y2VU174i4As
+- Video: https://youtu.be/y2VU174i4As
 
 ### Task 4 - Drawing a circle
-Code: *lab_week5/lab4_test/src/circle.cpp*
+- Code: *lab_week5/lab4_test/src/circle.cpp*
 
-Executable:
+- Executable:
 ```
 rosrun lab4_test circle_moveit
 ```
-Video: https://youtu.be/RkA03gqJpNE
+- Video: https://youtu.be/RkA03gqJpNE
