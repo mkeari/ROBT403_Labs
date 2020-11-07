@@ -13,4 +13,3 @@ Installation steps and demo videos are in the folder's README file.
 
 
 # LAB 5
-Sorry, I am having errors with MATLAB Toolbox configuration.
