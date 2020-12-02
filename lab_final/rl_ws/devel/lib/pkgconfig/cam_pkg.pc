@@ -1,0 +1,8 @@
+prefix=/home/devon/Documents/Github projects/robt2_labs/lab_final/rl_ws/devel
+
+Name: cam_pkg
+Description: Description of cam_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
